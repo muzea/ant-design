@@ -31,7 +31,7 @@ module.exports = {
     '\\.js$': './node_modules/antd-tools/lib/jest/codePreprocessor',
     '\\.md$': './node_modules/antd-tools/lib/jest/demoPreprocessor',
   },
-  testRegex: libDir === 'dist' ? 'demo\\.test\\.js$' : '.*\\.test\\.js$',
+  testRegex: libDir === 'dist' ? 'demo\\.test\\.js$' : '.*\\.test\\.tsx$',
   collectCoverageFrom: [
     'components/**/*.{ts,tsx}',
     '!components/*/style/index.tsx',

@@ -97,7 +97,11 @@ declare module "lodash/uniqBy";
 
 declare module 'intersperse';
 
-declare module "raf";
+declare module "raf" {
+  export default function raf(fn: any): number;
+  function cancel(handle: number): void;
+  function polyfill(object: any): void;
+}
 
 declare module "react-lifecycles-compat";
 

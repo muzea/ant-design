@@ -1,4 +1,4 @@
-import raf from 'raf';
+import raf, { cancel } from 'raf';
 
 export default function throttleByAnimationFrame(fn: (...args: any[]) => void) {
   let requestId: number | null;
@@ -14,7 +14,7 @@ export default function throttleByAnimationFrame(fn: (...args: any[]) => void) {
     }
   };
 
-  (throttled as any).cancel = () => raf.cancel(requestId!);
+  (throttled as any).cancel = () => cancel(requestId!);
 
   return throttled;
 }

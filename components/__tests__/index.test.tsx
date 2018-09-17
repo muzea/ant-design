@@ -1,6 +1,8 @@
 const OLD_NODE_ENV = process.env.NODE_ENV;
 process.env.NODE_ENV = 'development';
-const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+// https://github.com/facebook/jest/issues/6777
+const warnSpy = jest.spyOn(console, 'warn');
+warnSpy.mockImplementation(() => {});
 const antd = require('..');
 
 describe('antd', () => {
@@ -13,9 +15,7 @@ describe('antd', () => {
   });
 
   it('should hint when import all components in dev mode', () => {
-    expect(warnSpy).toBeCalledWith(
-      'You are using a whole package of antd, please use https://www.npmjs.com/package/babel-plugin-import to reduce app bundle size.'
-    );
+    expect(warnSpy).toBeCalledWith('You are using a whole package of antd, please use https://www.npmjs.com/package/babel-plugin-import to reduce app bundle size.');
     warnSpy.mockRestore();
   });
 });
